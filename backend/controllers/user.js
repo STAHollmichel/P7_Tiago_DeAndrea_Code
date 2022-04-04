@@ -9,7 +9,7 @@ const { User } = db.sequelize.models;
 const newToken = user => {
   token = jwt.sign(
       { userId: user.id},
-      `${'TOKEN'}`,
+      `${'RANDOM_TOKEN_SECRET'}`,
       { expiresIn: '24h' }
   )
   return { user, userId: user.id, token }
@@ -50,7 +50,7 @@ exports.login = (req, res, next) => {
               userId: user._id,
               token: jwt.sign(
                 { userId: user._id },
-                'TOKEN',
+                'RANDOM_TOKEN_SECRET',
                 { expiresIn: '24h' }
               )
             });

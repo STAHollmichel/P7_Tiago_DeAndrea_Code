@@ -6,9 +6,9 @@ const { Post } = db.sequelize.models;
 
 
 exports.createPost = async (req, res, next) => {
-    const postObject = JSON.parse(req.body.post)
-    const newPost = new Sauce({
-        ...postObject,
+    console.log(req.body);
+    const newPost = new Post({
+        ...req.body,
         // imageUrl: `${ req.protocol }://${ req.get("host") }/images/${ req.file.filename }`,
     });
         newPost.save()
