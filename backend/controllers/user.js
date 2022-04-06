@@ -6,14 +6,14 @@ const fs = require('fs');
 
 const { User } = db.sequelize.models;
 
-const newToken = user => {
-  token = jwt.sign(
-      { userId: user.id},
-      `${'RANDOM_TOKEN_SECRET'}`,
-      { expiresIn: '24h' }
-  )
-  return { user, userId: user.id, token }
-};
+// const newToken = user => {
+//   token = jwt.sign(
+//       { userId: user.id},
+//       `${'RANDOM_TOKEN_SECRET'}`,
+//       { expiresIn: '24h' }
+//   )
+//   return { user, userId: user.id, token }
+// };
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)

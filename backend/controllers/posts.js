@@ -5,16 +5,29 @@ const fs = require('fs');
 const { Post } = db.sequelize.models;
 
 
-exports.createPost = async (req, res, next) => {
-    console.log(req.body);
-    const newPost = new Post({
-        ...req.body,
-        // imageUrl: `${ req.protocol }://${ req.get("host") }/images/${ req.file.filename }`,
-    });
-        newPost.save()
-            .then(() => res.status(201).json({ message: 'Post enregistrée !'}))
-            .catch(error => res.status(400).json({ error }));
+// exports.createPost = async (req, res, next) => {
+//     console.log(req.body);
+//     const newPost = new Post({
+//         ...req.body,
+//         // imageUrl: `${ req.protocol }://${ req.get("host") }/images/${ req.file.filename }`,
+//     });
+//         newPost.save()
+//             .then(() => res.status(201).json({ message: 'Post enregistrée !'}))
+//             .catch(error => res.status(400).json({ error }));
+// };
+
+exports.createPost = (req, res, next) => {
+    Post.create ({  
+        postTittle: req.body.postTittle,  
+        postDescription: req.body.postDescription,
+        postPhoto: req.file ? `${ req.protocol }://${ req.get("host") }/images/${ req.file.filename }` : null,
+        userId: req.body.userId,
+    })  
+        .then(() => res.status(201).json({ message: 'Post enregistrée !'}))
+        .catch(error => res.status(400).json({ error }));
 };
+
+
 
 exports.modifyPost = (req, res, next) => {
     const postObject = req.file ? 
