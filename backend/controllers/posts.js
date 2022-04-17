@@ -31,13 +31,12 @@ exports.createPost = async (req, res, next) => {
 
 
 // exports.modifyPost = (req, res, next) => {
-    // const postObject = req.file ? 
-    //     { 
-    //         ...JSON.parse(req.body.post),
-    //         // imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
-    //     } 
-    //     : { ...req.body };
-    // const post=
+//     const postObject = req.file ? 
+//         { 
+//             ...JSON.parse(req.body.post),
+//             // imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+//         } 
+//         : { ...req.body };
 //     Post.update({ where: {id: req.params.id}}, { ...req.body})
 //         .then(() => res.status(200).json({ message: 'Post modifiée !'}))
 //         .catch(error => res.status(400).json({ error }));

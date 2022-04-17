@@ -4,8 +4,8 @@ const express = require('express'); // L'import d'express
 
 // Import des routes
 const userRoutes = require('./routes/user');
-
 const postsRoutes = require('./routes/posts');
+const commentsRoutes = require('./routes/comments');
 
 
 
@@ -31,6 +31,7 @@ app.use(express.json());
 // Gestion des routes
 app.use('/api/auth', userRoutes);
 app.use('/api/posts', postsRoutes);
+app.use('/api/comments', commentsRoutes);
 
 // Exportation de l'app
 module.exports = app; 
