@@ -1,5 +1,5 @@
 import React from 'react';
-import logoIcon from './icon-above-font.svg';
+import logoIcon from '../images/icon-above-font.svg';
 
 function Banner() {
     const Header = (logoIcon) =>{

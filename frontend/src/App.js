@@ -1,7 +1,8 @@
-import logo from './icon.svg';
+import logo from './components/images/icon.svg';
 import './App.css';
-import Connectez from './loginButton';
-import Banner from './header';
+import Inscrire from './components/buttons/signupButton';
+import Connectez from './components/buttons/loginButton';
+import Banner from './components/layout/header';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <p>
           Bienvenu au Réseaux Groupomania!
         </p>
+        <Inscrire />
         <Connectez />
       </header>
     </div>

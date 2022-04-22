@@ -24,12 +24,21 @@
   color: rgb(0, 0, 0);
 }
 
+.App-header p {
+margin-block-start: 2em;
+}
+
 .App-link {
   color: #ff3300;
 }
 
 .banner {
   color:rgb(0, 0, 0);
+}
+
+.banner div, img {
+  height:50px;
+
 }
 
 @keyframes App-logo-spin {

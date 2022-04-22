@@ -1,9 +1,8 @@
 const db = require('../models/index');
 
-const fs = require('fs');
-const { post } = require('../routes/comments');
-
 const { Post } = db.sequelize.models;
+
+const fs = require('fs');
 
 
 exports.createPost = async (req, res, next) => {
@@ -16,44 +15,6 @@ exports.createPost = async (req, res, next) => {
             .then(() => res.status(201).json({ message: 'Post enregistrée !'}))
             .catch(error => res.status(400).json({ error }));
 };
-
-// exports.createPost = (req, res, next) => {
-//     Post.create ({  
-//         postTittle: req.body.postTittle,  
-//         postDescription: req.body.postDescription,
-//         postPhoto: req.file ? `${ req.protocol }://${ req.get("host") }/images/${ req.file.filename }` : null,
-//         userId: req.body.userId,
-//     })  
-//         .then(() => res.status(201).json({ message: 'Post enregistrée !'}))
-//         .catch(error => res.status(400).json({ error }));
-// };
-
-
-
-// exports.modifyPost = (req, res, next) => {
-//     const postObject = req.file ? 
-//         { 
-//             ...JSON.parse(req.body.post),
-//             // imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
-//         } 
-//         : { ...req.body };
-//     Post.update({ where: {id: req.params.id}}, { ...req.body})
-//         .then(() => res.status(200).json({ message: 'Post modifiée !'}))
-//         .catch(error => res.status(400).json({ error }));
-// };
-
-
-
-// exports.modifyPost = (req, res, next) => {
-//  const updatePost (req.body) = {(
-//         postTittle: post.postTittle,
-//         postDescription: post.postDescription,
-//         postPhoto: post.postPhoto,
-//     }
-//     return Post.update(updatePost, { where: {id: req.params.id}})
-//             .then(() => res.status(200).json({ message: 'Post modifiée !'}))
-//             .catch(error => res.status(400).json({ error }));
-// };
 
 exports.modifyPost = (req, res, next) => {
     const updatePost= req.file ? 

@@ -5,7 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasMany(models.Post) 
+      User.hasMany(models.Post)
+	    User.hasMany(models.Comment)   
     }
   };
 
@@ -16,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type:DataTypes.STRING,
       allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true,
-            }
+      unique: true,
+      validate: {
+        isEmail: true,
+      }
     },
     password: {
       type:DataTypes.STRING,
@@ -28,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     profession: DataTypes.STRING,
     profilePhoto: DataTypes.STRING,
     bio: DataTypes.TEXT
-  }, {
+  }, 
+  {
     sequelize,
     modelName: 'User',
   });
