@@ -1,5 +1,6 @@
-import React from 'react';
+import logoIcon from '../images/icon-above-font.svg';
 import '../../App.css';
+import {NavLink} from 'react-router-dom';
 
 function Header() {
     return(
@@ -8,12 +9,8 @@ function Header() {
                 <img src={logoIcon} />
             </div>
             <ul classname="nav-links">
-                <Link to="/forum">
-                    <li>Forum</li>
-                </Link>
-                <Link to="/account">
-                    <li>Mon Compte</li>
-                </Link>
+                <NavLink to="/forum">Forum</NavLink>
+                <NavLink to="/account">Mon Compte</NavLink>
             </ul>
         </nav>
     );
