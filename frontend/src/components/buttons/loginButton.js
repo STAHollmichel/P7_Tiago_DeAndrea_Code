@@ -1,14 +1,12 @@
 import React from 'react';
 
-function Connectez() {
-    const connectezVous = () =>{
-        console.log("Connectez");
-    };
+function Connect() {
+
     return (
         <div>
-            <button onClick={connectezVous}>Connectez-vous</button>
+            <button onclick="window.location.href = '/frontend/src/pages/login.js'">Connectez-vous</button>
         </div>
     );
 }
 
-export default Connectez;
+export default Connect;

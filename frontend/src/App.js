@@ -1,21 +1,20 @@
-import logo from './components/images/icon.svg';
 import './App.css';
-import Inscrire from './components/buttons/signupButton';
-import Connectez from './components/buttons/loginButton';
-import Banner from './components/layout/header';
+import Home from './pages/home';
+import Signup from './pages/signup';
+import Login from './pages/login';
+import Forum from './pages/forum';
+import { Routes, Route} from 'react-router-dom';
+
 
 function App() {
   return (
     <div className="App">
-      <Banner />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Bienvenu au Réseaux Groupomania!
-        </p>
-        <Inscrire />
-        <Connectez />
-      </header>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/forum" element={<Forum/>} />
+      </Routes>
     </div>
   );
 }

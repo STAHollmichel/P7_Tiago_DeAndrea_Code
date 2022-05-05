@@ -1,12 +1,9 @@
-import React from 'react';
+import App from "../../App.css";
 
 function inscrire() {
-    const Sinscrire = () =>{
-        console.log("inscrire");
-    };
     return (
         <div>
-            <button onClick={Sinscrire}>S'inscrire</button>
+            <button onClick="window.location.href='/frontend/src/pages/signup.js'">S'inscrire</button>
         </div>
     );
 }
