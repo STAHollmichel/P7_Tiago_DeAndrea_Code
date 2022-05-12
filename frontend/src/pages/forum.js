@@ -1,6 +1,7 @@
-import '../App.css';
+import '../scss/App.css';
 import Header from '../components/layout/nav';
 import Post from './post';
+import Footer from '../components/layout/footer';
 
 function Forum() {
   return (
@@ -12,6 +13,7 @@ function Forum() {
         </h1>
         <Post />
       </div>
+      <Footer />
     </div>
   );
 }
