@@ -1,7 +1,8 @@
 import '../scss/App.css';
 import Header from '../components/layout/nav';
-import Post from './post';
 import Footer from '../components/layout/footer';
+import PostDisplay from './post_display';
+import {NavLink} from 'react-router-dom';
 
 function Forum() {
   return (
@@ -11,7 +12,10 @@ function Forum() {
         <h1>
           Bienvenu au Forum Groupomania!
         </h1>
-        <Post />
+        <PostDisplay />
+        <div className='loginBtn'>
+          <NavLink to='/post_create'>Postuler</NavLink>
+        </div>
       </div>
       <Footer />
     </div>

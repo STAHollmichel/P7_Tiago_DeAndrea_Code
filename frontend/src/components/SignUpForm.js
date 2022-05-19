@@ -1,20 +1,32 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+import { useNavigate} from "react-router-dom";
+ 
 function SignUpForm() {
   const { register, handleSubmit } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
 
     axios
       .post("http://localhost:3000/api/auth/signup", data)
-      .then( 
-        (result) => {
-        console.log(result);
-      })
-      .catch((err) => console.log(err));
-  };
+      .then((result) => {
+        axios
+          .post("http://localhost:3000/api/auth/login", {
+          email: data.email,
+          password: data.password,
+          })
+        .then((result) => {
+          navigate("/forum");
+        })
+        .catch((err) => console.log(err));
+     })
+     .catch((err) => {
+      console.log(err);
+    });
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

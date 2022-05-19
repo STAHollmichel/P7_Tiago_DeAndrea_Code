@@ -1,13 +1,48 @@
+import { useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
 
+// function addPostToLocalStorage (post) {
+
+// // if already object
+
+//     if (localStorage.getItem("posts")) {
+
+//     const postsData = JSON.parse(localStorage.getItem("posts"))
+//     postsData.push(post)
+//     localStorage.setItem("posts", JSON.stringify(postsData));
+//   }
+
+//   // if empty create new object
+
+//   else {
+    
+//     const postsData = [];
+//     postsData.push(post)
+//     localStorage.setItem("posts", JSON.stringify(postsData));
+//   }
+// }
+
 function PostForm() {
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = (data) => { window.alert("Commentaire ajoutée!")
         console.log(data);
-  
+        
+    useEffect(function addPostToLocalStorage(post) {
+            if (localStorage.getItem("posts")) {
+
+                const postsData = JSON.parse(localStorage.getItem("posts"))
+                postsData.push(post)
+                localStorage.setItem('posts', JSON.stringify(postsData));
+            }    
+                else {
+                    const postsData = [];
+                    postsData.push(post)
+                    localStorage.setItem("posts", JSON.stringify(postsData));
+                }
+        });
         axios
             .post("http://localhost:3000/api/posts/", data)
             .then(
@@ -15,7 +50,8 @@ function PostForm() {
                 console.log(result);
              })
             .catch((err) => console.log(err));
-    };
+}
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
