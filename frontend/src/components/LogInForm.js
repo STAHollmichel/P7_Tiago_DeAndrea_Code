@@ -17,7 +17,9 @@ function LogInForm() {
                 password: data.password,
             })
             .then((result) => {
-                navigate("/forum");
+                localStorage.token = result.data.token;
+                axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.token
+                navigate("/home");
             })
             .catch((err) => console.log(err));
     };
@@ -34,8 +36,8 @@ function LogInForm() {
             </div>
             <button type="submit" value="Submit" class="btn btn-primary">Connecter</button>
         </form>
-        );
-    }
+    );
+}
 
 export default LogInForm;
 

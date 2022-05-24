@@ -1,22 +1,23 @@
-import logo from '../components/images/icon.svg';
 import '../scss/App.css';
+import Header from '../components/layout/nav';
+import Footer from '../components/layout/footer';
+import PostDisplay from './post_display';
 import {NavLink} from 'react-router-dom';
 
 function Home() {
   return (
     <div className="landingPage">
+      <Header />
       <div className="landingPage-banner">
-        <img src={logo} className="landingPage-logo" alt="logo" />
-        <p>
+        <h1>
           Bienvenu chez Groupomania!
-        </p>
-        <div className='signupBtn'>
-          <NavLink to='/signup'>Signup</NavLink>
-        </div>
+        </h1>
+        <PostDisplay />
         <div className='loginBtn'>
-          <NavLink to='/login'>Login</NavLink>
+          <NavLink to='/post_create'>Postuler</NavLink>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

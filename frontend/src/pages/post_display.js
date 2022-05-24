@@ -11,10 +11,6 @@ function PostDisplay() {
   console.log(posts);
 
   useEffect(() => {
-  // const [{ data, loading, error }, refetch] = axios({
-  //   url: "https://http://localhost:3000/api",
-  //   headers: {'Authorization': `bearer ${token}`}
-  // });
   
     axios
       .get("http://localhost:3000/api/posts")
@@ -25,10 +21,10 @@ function PostDisplay() {
   }, []);
 
   return (
-    <div className="landingPage">
+    <div className="container">
       {posts.length
         ? posts.map((post) => (
-            <div>
+            <div class="card mb-3">
               <h2>{post.postTittle}</h2>
               <p>{post.postDescription}</p>
               <Link to={`/post/${post.id}`}>Voir le post</Link>

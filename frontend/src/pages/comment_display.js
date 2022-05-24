@@ -23,7 +23,9 @@ function CommentDisplay() {
         ? comments.map((comment) => (
             <div>
               <p>{comment.commentDescription}</p>
-              <Link to={`/comment/${comment.id}`}>Voir le post</Link>
+              <a class="btn-primary">
+                <Link to={`/comment/${comment.id}`}>Voir le comment</Link>
+              </a>
             </div>
           ))
         : null}
