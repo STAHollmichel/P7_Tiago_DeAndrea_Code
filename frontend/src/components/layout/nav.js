@@ -1,29 +1,34 @@
 import logoIcon from '../images/icon-above-font.svg';
-import '../../scss/App.css';
+import '../../App.css';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
 function Header() {
+
+    const [token,setToken] = useState(null)
+
     const navigate = useNavigate()
-    // const [logOut, setlogOut] = useState(false);
+
+    const logOut = () => {
+      localStorage.clear();
+      navigate ("/")
+    }
     
     useEffect(() => {
-     navigate ("/home")
-      if(!localStorage.token) {
-        navigate("/login")
-      };
-      // if (localStorage.clear) {
-        // navigate("/home")}
+      setToken(localStorage.token)
     }, [])
 
-    
+    if(!token) {
+      navigate("/")
+    };
 
   return(
+    <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" >
               <NavLink to="/home">
-              <img src={logoIcon} onclick={navigate}/>
+              <img src={logoIcon} onClick={navigate}/>
               </NavLink>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,11 +48,12 @@ function Header() {
               </li>
             </ul>
             <div class="navbar-disconnect">
-              {/* <button class="btn-danger" onclick={() => setlogOut(localStorage.clear())}>Déconnexion</button> */}
+              <button class="btn btn-danger" onClick={logOut}>Déconnexion</button>
             </div>
           </div>
         </div>
       </nav>
+    </header>
   );
 }
 

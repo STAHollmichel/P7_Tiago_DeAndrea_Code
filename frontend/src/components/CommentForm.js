@@ -1,21 +1,26 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 
 function CommentForm() {
     const { register, handleSubmit } = useForm();
 
+    const navigate = useNavigate();
+
     const onSubmit = (data) => {
         console.log(data);
   
         axios
-            .post("http://localhost:3000/api/posts/", data)
+            .post("http://localhost:3000/api/comments/", data)
             .then(
                 (result) => {
+                    navigate("/post/id")
                 console.log(result);
              })
             .catch((err) => console.log(err));
     };
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

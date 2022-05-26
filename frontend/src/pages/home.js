@@ -1,4 +1,4 @@
-import '../scss/App.css';
+import '../App.css';
 import Header from '../components/layout/nav';
 import Footer from '../components/layout/footer';
 import PostDisplay from './post_display';
@@ -6,9 +6,9 @@ import {NavLink} from 'react-router-dom';
 
 function Home() {
   return (
-    <div className="landingPage">
+    <div className='landingPage'>
       <Header />
-      <div className="landingPage-banner">
+      <main className='container-fluid bg-light'>
         <h1>
           Bienvenu chez Groupomania!
         </h1>
@@ -16,7 +16,7 @@ function Home() {
         <div className='loginBtn'>
           <NavLink to='/post_create'>Postuler</NavLink>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );

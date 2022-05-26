@@ -1,4 +1,4 @@
-import '../scss/App.css';
+import '../App.css';
 import SignUpForm from '../components/SignUpForm';
 
 function Signup() {

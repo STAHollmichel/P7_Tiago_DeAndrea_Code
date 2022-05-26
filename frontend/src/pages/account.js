@@ -1,4 +1,4 @@
-import '../scss/App.scss';
+import '../App.scss';
 import Nav from '../components/layout/nav';
 
 function Account() {

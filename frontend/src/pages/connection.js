@@ -1,5 +1,5 @@
 import logo from '../components/images/icon.svg';
-import '../scss/App.css';
+import '../App.css';
 import {NavLink} from 'react-router-dom';
 
 function Connection() {

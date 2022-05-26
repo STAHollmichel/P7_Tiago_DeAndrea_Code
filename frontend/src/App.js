@@ -1,5 +1,12 @@
-import './scss/App.css';
+import './App.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+
 import axios from "axios";
+import { Routes, Route} from 'react-router-dom';
+
+
 import Connection from './pages/connection';
 import Signup from './pages/signup';
 import Login from './pages/login';
@@ -10,12 +17,14 @@ import PostDisplay from './pages/post_display';
 import SinglePost from './pages/post_single';
 import CommentCreate from './pages/comment_create';
 import CommentDisplay from './pages/comment_display';
-import { Routes, Route} from 'react-router-dom';
+
 
 
 function App() {
 
     axios.defaults.headers.common.Authorization = 'Bearer ' + localStorage.token
+
+    library.add(fab)
   
     return (
       <div className="App">
@@ -30,6 +39,7 @@ function App() {
           <Route path="/comment_create" element={<CommentCreate/>} />
           <Route path="/comment_display" element={<CommentDisplay/>} />
           <Route path="/post/:id" element={<SinglePost />} />
+
         </Routes>
       </div>
   );

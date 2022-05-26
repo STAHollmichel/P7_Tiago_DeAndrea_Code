@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../scss/App.css";
+import "../App.css";
 import { Link } from "react-router-dom";
 
 function PostDisplay() {
-  // const postsData = JSON.parse(localStorage.getItem("posts"))
 
   const [posts, setPosts] = useState([]);
 
@@ -21,13 +20,18 @@ function PostDisplay() {
   }, []);
 
   return (
-    <div className="container">
+    <div className='container'>
       {posts.length
         ? posts.map((post) => (
-            <div class="card mb-3">
-              <h2>{post.postTittle}</h2>
-              <p>{post.postDescription}</p>
-              <Link to={`/post/${post.id}`}>Voir le post</Link>
+            <div className='card mb-3'>
+              <picture>
+                <img className='card-img-top'></img>
+              </picture>
+              <div className='card-body text-center'>
+                <h2>{post.postTittle}</h2>
+                <p>{post.postDescription}</p>
+              </div>
+              <Link to={`/post/${post.id}`}><button className='btn btn-primary mb-3'>Voir le post</button></Link>
             </div>
           ))
         : null}

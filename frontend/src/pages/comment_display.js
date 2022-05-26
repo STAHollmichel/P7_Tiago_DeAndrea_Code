@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../scss/App.css";
+import "../App.css";
 import { Link } from "react-router-dom";
 
 function CommentDisplay() {
+
   const [comments, setComments] = useState([]);
   
   console.log(comments);
 
   useEffect(() => {
+    
     axios
       .get("http://localhost:3000/api/comments")
       .then((comments) => {
@@ -18,14 +20,12 @@ function CommentDisplay() {
   }, []);
 
   return (
-    <div className="landingPage">
+    <div className='container'>
       {comments.length
         ? comments.map((comment) => (
-            <div>
+            <div className='card mb-3'>
               <p>{comment.commentDescription}</p>
-              <a class="btn-primary">
-                <Link to={`/comment/${comment.id}`}>Voir le comment</Link>
-              </a>
+              <Link to={`/comment/${comment.id}`}><button className='btn btn-primary'>Voir le comment</button></Link> 
             </div>
           ))
         : null}

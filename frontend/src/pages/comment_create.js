@@ -1,18 +1,14 @@
-import '../scss/App.css';
-import Nav from '../components/layout/nav';
+import '../App.css';
 import CommentForm from '../components/CommentForm';
 
 function CommentCreate() {
   return (
-    <div className="landingPage">
-      <Nav />
-      <div class="container-sm col-11" className="landingPage-banner">
+      <div className='container-sm col-11'>
         <h1>
           Commentaire 1!
         </h1>
         <CommentForm />
       </div>
-    </div>
   );
 }
 

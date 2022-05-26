@@ -1,4 +1,4 @@
-import '../scss/App.css';
+import '../App.css';
 import LogInForm from '../components/LogInForm';
 
 function login() {

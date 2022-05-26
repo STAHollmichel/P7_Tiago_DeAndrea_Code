@@ -16,7 +16,7 @@ exports.modifyComment = (req, res, next) => {
             ...JSON.parse(req.body),
         } 
         : { ...req.body };
-    Comment.update({  where: { id: req.params.id }}, { ...updateComment,  where: { id: req.params.Id }})
+    Comment.update({ ...updateComment}, { where: { id: req.params.Id }})
         .then(() => res.status(200).json({ message: 'Commentaire modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };

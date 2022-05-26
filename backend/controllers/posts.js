@@ -23,7 +23,8 @@ exports.modifyPost = (req, res, next) => {
             // imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
         } 
         : { ...req.body };
-    Post.update({  where: { id: req.params.id }}, { ...updatePost,  where: { id: req.params.id }})
+        console.log(updatePost);
+    Post.update({ ...updatePost}, { where: { id: req.params.id }})
         .then(() => res.status(200).json({ message: 'Post modifiée !'}))
         .catch(error => res.status(400).json({ error }));
   };

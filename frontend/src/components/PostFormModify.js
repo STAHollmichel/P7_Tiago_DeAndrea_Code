@@ -1,21 +1,17 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 
-function PostForm() {
-
+function ModifyPost(props) {
     const { register, handleSubmit } = useForm();
 
-    const navigate = useNavigate();
-
     const onSubmit = (data) => { 
-        window.alert("Post ajoutée!");
+        window.alert("Commentaire modifié!");
         console.log(data);
         axios
-            .post("http://localhost:3000/api/posts/", data)
-            .then((result) => {
-                navigate("/home");
-                console.log(result);
+            .put("http://localhost:3000/api/posts/" + props.id, data)
+            .then(
+                (result) => {
+                window.location.reload();
              })
             .catch((err) => console.log(err));
     }
@@ -35,4 +31,4 @@ function PostForm() {
         );
     }
 
-export default PostForm;
+export default ModifyPost;
