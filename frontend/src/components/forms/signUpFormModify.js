@@ -11,23 +11,19 @@ function SignUpForm() {
   const onSubmit = (data) => {
     console.log(data);
 
-    axios
-      .post("http://localhost:3000/api/auth/signup", data)
-      .then((result) => {
-        axios
-          .post("http://localhost:3000/api/auth/login", {
-          email: data.email,
-          password: data.password,
-          })
-        .then((result) => {
-          navigate("/forum");
-        })
-        .catch((err) => console.log(err));
-     })
-     .catch((err) => {
-      console.log(err);
-    });
+
+    const onSubmit = (data) => { 
+      window.alert("Publication modifié!");
+      console.log(data);
+      axios
+          .put("http://localhost:3000/api/auth/:userId" + props.id, data)
+          .then(
+              (result) => {
+              window.location.reload();
+           })
+          .catch((err) => console.log(err));
   }
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,5 +59,5 @@ function SignUpForm() {
     </form>
   );
 }
-
+}
 export default SignUpForm;

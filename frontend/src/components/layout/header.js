@@ -36,14 +36,14 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item me-2">
                 <NavLink to="/home">Home</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/account_profile">Mon Profile</NavLink>
               </li>
             </ul>
-            <div className="navbar-disconnect">
+            <div className="navbar-disconnect me-2">
               <button className="btn btn-danger" onClick={logOut}>Déconnexion</button>
             </div>
           </div>

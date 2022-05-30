@@ -8,6 +8,7 @@ import axios from "axios";
 import Footer from '../components/layout/footer';
 import Header from '../components/layout/header';
 
+import logoImage from '../components/images/icon.svg';
 
 function AccountProfile() { 
 
@@ -31,16 +32,17 @@ function AccountProfile() {
         return (
             <div className='page__wrapper'>
                 <Header />
-                <main className='container-fluid'>
+                <main className='container-fluid bg-light'>
                     <div className='container py-4'>
                         <div className='card mb-3'>
                             <picture>
-                                <img className='card-img-top' alt="Profile"/>
+                                <img src={logoImage} className='card-img-top' alt="Profile"/>
                             </picture>
                             <div className='card-body text-center'>
                                 <h1>Hello</h1>
                                 <h2>{user.firstName}</h2>
                                 <p>{user.age}</p>
+                                <button className='btn btn-primary'>Editer le profile</button>
                             </div>
                         </div>
                     </div>
