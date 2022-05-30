@@ -6,14 +6,6 @@ const fs = require('fs');
 
 const { User } = db.sequelize.models;
 
-// const newToken = user => {
-//   token = jwt.sign(
-//       { userId: user.id},
-//       `${'RANDOM_TOKEN_SECRET'}`,
-//       { expiresIn: '24h' }
-//   )
-//   return { user, userId: user.id, token }
-// };
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
@@ -65,3 +57,18 @@ exports.getOneUser = (req, res, next) => {
         .then(user => res.status(200).json({ user }))
         .catch(error => res.status(404).json({ error }));
 }
+
+exports.deleteUser = (req, res, next) => {
+  console.log(req.params.id);
+  User.findOne({ where: {id: req.params.id}})
+      .then(user => {
+          console.log(user);
+          // const filename = post.imageUrl.split('/images/')[1];
+          // fs.unlink(`images/${filename}`, () => {
+              User.destroy({ where: {id: req.params.id}})
+                  .then(() => res.status(200).json({ message: 'Utilizateur supprimée !'}))
+                  .catch(error => res.status(400).json({ error }));
+          // });
+      })
+      .catch(error => res.status(500).json({ error }));
+};

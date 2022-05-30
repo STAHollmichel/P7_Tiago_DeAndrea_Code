@@ -3,6 +3,8 @@ import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
 
+import logoImage from '../components/images/icon.svg';
+
 function PostDisplay() {
 
   const [posts, setPosts] = useState([]);
@@ -20,12 +22,12 @@ function PostDisplay() {
   }, []);
 
   return (
-    <div className='container'>
+    <div className='container py-4 col-lg-5'>
       {posts.length
         ? posts.map((post) => (
             <div className='card mb-3'>
               <picture>
-                <img className='card-img-top'></img>
+                <img src={logoImage} className='card-img-top' alt='Post' />
               </picture>
               <div className='card-body text-center'>
                 <h2>{post.postTittle}</h2>

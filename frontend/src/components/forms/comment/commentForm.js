@@ -24,11 +24,11 @@ function CommentForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div class="mb-3">
-                <label for="InputComment1" class="form-label">Commentaire :</label>
-                <textarea {...register("postDescription")} class="form-control" id="InputComment1" />
+            <div className="mb-3">
+                <label for="InputComment1" className="form-label">Commentaire :</label>
+                <textarea {...register("postDescription")} className="form-control" id="InputComment1" />
             </div>
-            <button type="submit" action="link"value="Submit" class="btn btn-primary">Commenter</button>
+            <button type="submit" action="link"value="Submit" className="btn btn-primary">Commenter</button>
         </form>
         );
     }

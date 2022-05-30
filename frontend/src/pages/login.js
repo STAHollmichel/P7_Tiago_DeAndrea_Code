@@ -1,13 +1,19 @@
+import logo from '../components/images/icon.svg';
 import '../App.css';
-import LogInForm from '../components/LogInForm';
+import LoginForm from '../components/forms/loginForm';
 
-function login() {
-    return(
-        <div class="container-sm col-9">
-            <h1>Bienvenue! Connectez-vouz chez Groupo Mania</h1>
-            <LogInForm />
+function Login() {
+  return (
+    <main className='container-fluid'>
+      <div>
+        <img src={logo} className="landingPage-logo" alt="logo" />
+        <h1 className="h3 mb-3 fw-normal">Veuillez vous connecter</h1>
+        <div>
+          <LoginForm />
         </div>
-    );
+      </div>
+    </main>
+  );
 }
 
-export default login;
+export default Login;

@@ -1,4 +1,7 @@
-$theme-colors: (
-    "primary": #100979,
-    "danger": #ff3300
-);
+@charset 'utf-8';
+
+@use "02_base/body";
+@use "02_base/main.scss";
+
+@use "03_components/header";
+@use "03_components/footer.scss";

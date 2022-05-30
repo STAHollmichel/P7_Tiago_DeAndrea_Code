@@ -1,10 +1,10 @@
 import '../App.scss';
-import Nav from '../components/layout/nav';
+import Header from '../components/layout/header';
 
 function Account() {
   return (
     <div className="landingPage">
-      <Nav />
+      <Header />
       <div className="landingPage-banner">
         <h1>
           Compte Profile 
