@@ -24,6 +24,15 @@ function AccountProfile() {
         setModify(!modify)
     }
 
+    const deleteAccount = () => {
+        axios
+            .delete("http://localhost:3000/api/auth/")
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => console.log(err));
+    }
+
     useEffect(() => {
 
         axios
@@ -53,6 +62,9 @@ function AccountProfile() {
                                 <button onClick={toggleModify} className='btn btn-primary'>Editer le profile</button>
                             </div>
                             <SignUpFormModify modify={modify} />
+                            <div>
+                                <button onClik={deleteAccount} className='btn btn-primary'>Effacer le profile</button>
+                            </div>
                         </div>
                     </div>
                 </main>
