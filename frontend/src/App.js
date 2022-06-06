@@ -33,10 +33,10 @@ function App() {
     return (
       <div className="App">
         <Routes>
-          <Route path="/" element={<Login/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/account_profile" element={<AccountProfile/>} />
-          <Route path="/home" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/post_display" element= {<PostDisplay/>} />
           <Route path="/comment_display" element={<CommentDisplay/>} />
           <Route path="/post/:id" element={<SinglePost />} />

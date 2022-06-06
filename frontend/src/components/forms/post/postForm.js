@@ -15,7 +15,7 @@ function PostForm() {
         axios
             .post("http://localhost:3000/api/posts/", data)
             .then((result) => {
-                navigate("/home");
+                navigate("/");
                 console.log(result);
              })
             .catch((err) => console.log(err));

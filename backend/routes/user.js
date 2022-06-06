@@ -16,8 +16,9 @@ router.post('/login', userCtrl.login);
 
 
 // routes de l'utilisateur
-router.get('/:userId', userCtrl.getOneUser);
-// router.delete('/:userId', auth, userCtrl.deleteUser);
+router.get('/', auth, userCtrl.getOneUser);
+router.put('/', auth, userCtrl.updateUser);
+router.delete('/', auth, userCtrl.deleteUser);
 
 // L'exporte vers la app
 module.exports = router;

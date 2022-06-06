@@ -53,10 +53,17 @@ exports.login = (req, res, next) => {
 };
 
 exports.getOneUser = (req, res, next) => {
-    User.findOne({ where: { id: req.params.userId } })
+    User.findOne({ where: { id: req.auth.userId } })
         .then(user => res.status(200).json({ user }))
         .catch(error => res.status(404).json({ error }));
 }
+
+exports.updateUser =(req, res, next) => {
+  User.update({ where: { id: req.auth.userId } })
+    .then(user => res.status(200).json({ user }))
+    .catch(error => res.status(404).json({ error }));
+}
+
 
 exports.deleteUser = (req, res, next) => {
   console.log(req.params.id);

@@ -12,10 +12,10 @@ function CommentForm() {
         console.log(data);
   
         axios
-            .post("http://localhost:3000/api/comments/", data)
+            .post("http://localhost:3000/api/comments/", {...data, postId: props.postId})
             .then(
                 (result) => {
-                    navigate("/post/id")
+                    navigate("/post/" + props.postId)
                 console.log(result);
              })
             .catch((err) => console.log(err));

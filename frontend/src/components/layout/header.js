@@ -27,7 +27,7 @@ function Header() {
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <div className="container-fluid">
           <div className="navbar-brand" >
-              <NavLink to="/home">
+              <NavLink to="/">
               <img src={logoIcon} onClick={navigate} alt='Groupomania navLogo'/>
               </NavLink>
           </div>
@@ -37,7 +37,7 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item me-2">
-                <NavLink to="/home">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/account_profile">Mon Profile</NavLink>
