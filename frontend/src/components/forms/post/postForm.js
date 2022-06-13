@@ -1,13 +1,11 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+
 import FileUploaderBtn from '../../buttons/fileUploaderBtn';
 
 function PostForm() {
 
     const { register, handleSubmit } = useForm();
-
-    const navigate = useNavigate();
 
     const onSubmit = (data) => { 
         window.alert("Publication ajoutée!");
@@ -15,7 +13,7 @@ function PostForm() {
         axios
             .post("http://localhost:3000/api/posts/", data)
             .then((result) => {
-                navigate("/");
+                window.location.reload();
                 console.log(result);
              })
             .catch((err) => console.log(err));

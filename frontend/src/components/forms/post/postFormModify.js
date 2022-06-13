@@ -19,10 +19,6 @@ function ModifyPost(props) {
     return (
         <div className="container col-lg-5 py-4">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-3 col ">
-                    <label for="InputTittle1" className="form-label">Titre :</label>
-                    <input {...register("postTittle")} type="text" className="form-control" id="InputTittle1" />
-                </div>
                 <div className="mb-3">
                     <label for="InputPost1" class="form-label">Post :</label>
                     <textarea {...register("postDescription")} className="form-control" id="InputPost1" />

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 function CommentForm() {
@@ -8,14 +8,16 @@ function CommentForm() {
 
     const navigate = useNavigate();
 
+    const params = useParams();
+
     const onSubmit = (data) => {
         console.log(data);
-  
+        console.log(params)
         axios
-            .post("http://localhost:3000/api/comments/", {...data, postId: props.postId})
+            .post("http://localhost:3000/api/comments/", {...data, postId: params.id})
             .then(
                 (result) => {
-                    navigate("/post/" + props.postId)
+                    navigate("/post/" + params.id)
                 console.log(result);
              })
             .catch((err) => console.log(err));
@@ -26,9 +28,9 @@ function CommentForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
                 <label for="InputComment1" className="form-label">Commentaire :</label>
-                <textarea {...register("postDescription")} className="form-control" id="InputComment1" />
+                <textarea {...register("commentDescription")} className="form-control" id="InputComment1" />
             </div>
-            <button type="submit" action="link"value="Submit" className="btn btn-primary">Commenter</button>
+            <button type="submit" value="Submit" className="btn btn-primary">Commenter</button>
         </form>
         );
     }

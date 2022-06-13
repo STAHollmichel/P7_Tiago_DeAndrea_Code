@@ -45,7 +45,10 @@ exports.deletePost = (req, res, next) => {
   };
   
 exports.getAllPosts = (req, res, next) => {
-    Post.findAll()
+    Post.findAll({
+        order: [[
+            "createdAt", "DESC"
+        ]]})
         .then((posts) => res.status(200).json(posts))
         .catch(error => res.status(400).json({ error }));
 };
@@ -55,3 +58,42 @@ exports.getOnePost = (req, res, next) => {
         .then((post) => res.status(200).json(post))
         .catch(error => res.status(400).json({ error }));
 };
+
+exports.userLikePost = (req, res, next) => {
+
+    let like = req.body.like 
+    let userId = req.body.userId 
+    let postId = req.params.id 
+    if (like === 1) { 
+      Post.updateOne(
+        {_id: postId}, 
+        {
+            $push: {usersLiked : userId},
+            $inc: {likes: 1}
+        }) 
+  
+        .then(() => res.status(200).json({ message: 'Vous aimez cette post !!!'}))
+        .catch(error => res.status(400).json({ error }));
+    }
+
+    //Annulation d'un like ou dislike
+    if (like === 0) { 
+      Sauce.findOne({_id: postId})  
+        .then((post) => {
+          //Si l'utilisateur annule un like
+          if (sauce.usersLiked.find(user => user === userId)) { 
+            Sauce.updateOne(
+              {_id: postId},
+              { $pull: { usersLiked: userId},
+                $inc: { likes: -1 }
+              })
+  
+              .then(() => res.status(200).json({ message: 'Votre avis a été annulé'}))
+              .catch(error => res.status(400).json({ error }));
+          }
+        })
+        .catch((error) => res.status(404).json({ error }))
+  
+    }
+  
+  };

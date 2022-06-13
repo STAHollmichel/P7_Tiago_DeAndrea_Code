@@ -11,7 +11,7 @@ function Header() {
 
     const logOut = () => {
       localStorage.clear();
-      navigate ("/")
+      navigate ("/login")
     }
     
     useEffect(() => {
@@ -19,7 +19,7 @@ function Header() {
     }, [])
 
     if(!token) {
-      navigate("/")
+      navigate("/login")
     };
 
   return(

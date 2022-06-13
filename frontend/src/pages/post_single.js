@@ -7,6 +7,7 @@ import Header from '../components/layout/header';
 import PostFormModify from '../components/forms/post/postFormModify';
 import logoImage from '../components/images/icon.svg';
 import Footer from '../components/layout/footer';
+import CommentDisplay from './comment_display';
 
 const SinglePost = () => {
 
@@ -15,6 +16,11 @@ const params = useParams();
 const navigate = useNavigate();
 
 const [post, setPost] = useState();
+
+// let popup = document.getElementById("popup");
+
+// const openPopupPostEdit = 
+//     popup.classList.add("open-popup_postEdit");
 
 useEffect(() => {
 
@@ -30,38 +36,38 @@ const deletePost = () => {
     axios.delete("http://localhost:3000/api/posts/" + params.id)
     .then((result) => {
         alert("Post Suprimé");
-        navigate("/home")
+        navigate("/")
     }) 
 }
 
 const commentPost = () => {
-    navigate("/comment_create")
+    navigate("/comment_create/" + post.id)
 
 }
 
-console.log(post);
 
 if(post) {
     return (
         <div className='page__wrapper'>
             <Header />
-            <main className='container-fluid bg-light'>
+            <main className='container-fluid bg-light' id='main-post_single'>
                 <div className="container pt-3 col-lg-5">
                     <div className="card mb-3">
                     <picture>
                         <img src={logoImage} className='card-img-top' alt='Post'/>
                     </picture>
                     <div className="card-body text-center ">
-                        <h1>{post.postTittle}</h1>
                         <p>{post.postDescription}</p>
-                        <button className='btn btn-danger m-2'>Editer</button>
+                        {/* <button onclick={openPopupPostEdit} className='btn btn-primary m-2'>Editer</button> */}
                         <button onClick={deletePost} className='btn btn-danger m-2'>Effacer</button>
                         <button onClick={commentPost} className='btn btn-danger m-2'>Commenter</button>
                     </div>
                     </div>
                 </div>
-            <PostFormModify id={post.id} />
-            {/* <CommentForm id={comment.id} /> */}
+            <CommentDisplay postId={post.id}/>
+            <div className='popup_postEdit' id='popup'>
+                <PostFormModify id={post.id} />
+            </div>
             </main>
             <Footer />
         </div>

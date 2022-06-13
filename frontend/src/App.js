@@ -15,6 +15,7 @@ import Home from './pages/home';
 import PostDisplay from './pages/post_display';
 import SinglePost from './pages/post_single';
 import CommentDisplay from './pages/comment_display';
+import CommentForm from './components/forms/comment/commentForm';
 
 // Components
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/post_display" element= {<PostDisplay/>} />
           <Route path="/comment_display" element={<CommentDisplay/>} />
           <Route path="/post/:id" element={<SinglePost />} />
+          <Route path="/comment_create/:id" element={<CommentForm />} />
         </Routes>
       </div>
   );

@@ -20,8 +20,8 @@ function AccountProfile() {
 
     const toggleModify = () => {
 
-       if(modify)
-        setModify(!modify)
+        setModify(!modify);
+
     }
 
     const deleteAccount = () => {

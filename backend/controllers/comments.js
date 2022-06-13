@@ -4,7 +4,7 @@ const { Comment, Post } = db.sequelize.models;
 
 
 exports.createComment = (req, res, next) => {
-    Comment.create({ ...req.body, userId: req.body.userId, postId: req.body.postID }) 
+    Comment.create({ ...req.body, userId: req.body.userId, postId: req.body.postId }) 
     .then(() => res.status(201).json({ message: 'Commentaire ajouté !'}))
     .catch(error => res.status(400).json({ error }));
 };
@@ -35,7 +35,7 @@ exports.deleteComment = (req, res, next) => {
 
 exports.getAllCommentsOfPost = (req, res, next) => {
     const options = {
-        where: { postId: req.query.postId },
+        where: { postId: req.params.postId },
         include: db.User,
         order: [['id', 'ASC']]
     }

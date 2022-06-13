@@ -8,14 +8,8 @@ const auth = require('../middleware/auth');
 router.post('/', auth, commentsCtrl.createComment);
 router.put('/:id', auth, commentsCtrl.modifyComment);
 router.delete('/:id', auth, commentsCtrl.deleteComment);
-router.get('/', auth, commentsCtrl.getAllCommentsOfPost);
-router.get('/:id', auth, commentsCtrl.getOneCommentOfPost);
-
-// router.post('/:postId', auth, commentsCtrl.createComment);
-// router.put('/:commentId', auth, commentsCtrl.modifyComment);
-// router.delete('/:commentId', auth, commentsCtrl.deleteComment);
-// router.get('/post/postId', auth, commentsCtrl.getAllCommentsOfPost);
-// router.get('/:commentId', auth, commentsCtrl.getOneCommentOfPost);
+router.get('/:postId', auth, commentsCtrl.getAllCommentsOfPost);
+router.get('/single/:id', auth, commentsCtrl.getOneCommentOfPost);
 
 module.exports = router;
 
