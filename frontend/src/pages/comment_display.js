@@ -11,8 +11,8 @@ function CommentDisplay(props) {
 
   const params = useParams();
 
-  const deleteComment = () => {
-    axios.delete("http://localhost:3000/api/comments/" + params.id)
+  const deleteComment = (commentId) => {
+    axios.delete("http://localhost:3000/api/comments/" + commentId)
     .then((result) => {
         alert("Comment Suprimé");
         window.location.reload();
@@ -36,8 +36,7 @@ function CommentDisplay(props) {
             <div className='card mb-3'>
               <div className='card-text p-2'>
               <p>{comment.commentDescription}</p>
-              <button onClick={deleteComment} className='btn btn-danger'>Effacer</button>
-              <button className='btn btn-secondary'>Like</button>
+              <button onClick={() => deleteComment(comment.id)} className='btn btn-danger'>Effacer</button>
               </div>
             </div>
           ))

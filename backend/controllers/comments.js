@@ -23,8 +23,7 @@ exports.modifyComment = (req, res, next) => {
 
 
 exports.deleteComment = (req, res, next) => {
-    console.log(req.params.id);
-    Post.findOne({ where: {id: req.params.id}})
+   Comment.findOne({ where: {id: req.params.id}})
         .then(comment => {
             console.log(comment);
                 Comment.destroy({ where: {id: req.params.id}})

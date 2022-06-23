@@ -4,6 +4,11 @@ import "../App.css";
 import { Link } from "react-router-dom";
 
 import logoImage from '../components/images/icon.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+
+// import { userLikePost } from '../../../backend/controllers/posts';
 
 function PostDisplay() {
 
@@ -11,6 +16,12 @@ function PostDisplay() {
 
   console.log(posts);
 
+  const like = (postId) => {
+    axios.post("http://localhost:3000/api/posts/" + postId + '/like')
+    .then((result) =>{
+      console.log(result)
+    })
+  }
   useEffect(() => {
   
     axios
@@ -32,8 +43,12 @@ function PostDisplay() {
               <div className='card-body text-center'>
                 <h2>{post.postTittle}</h2>
                 <p>{post.postDescription}</p>
+                <div>
+                <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
+                  <button onClick={() => like(post.id)} className='btn btn-secondary ms-3 mb-3'>Like</button>
+                  <Link to={`/post/${post.id}`}><button className='btn btn-primary ms-3 mb-3'>Voir le post</button></Link>
+                </div>
               </div>
-              <Link to={`/post/${post.id}`}><button className='btn btn-primary mb-3'>Voir le post</button></Link>
             </div>
           ))
         : null}

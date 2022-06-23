@@ -11,5 +11,7 @@ router.delete('/:id', auth, commentsCtrl.deleteComment);
 router.get('/:postId', auth, commentsCtrl.getAllCommentsOfPost);
 router.get('/single/:id', auth, commentsCtrl.getOneCommentOfPost);
 
+
+
 module.exports = router;
 

@@ -9,6 +9,8 @@ exports.createPost = async (req, res, next) => {
     console.log(req.body);
     const newPost = new Post({
         ...req.body,
+        userLike: 0,
+        usersLiked: JSON.stringify([])
         // imageUrl: `${ req.protocol }://${ req.get("host") }/images/${ req.file.filename }`,
     });
         newPost.save()
@@ -61,39 +63,40 @@ exports.getOnePost = (req, res, next) => {
 
 exports.userLikePost = (req, res, next) => {
 
-    let like = req.body.like 
-    let userId = req.body.userId 
-    let postId = req.params.id 
-    if (like === 1) { 
-      Post.updateOne(
-        {_id: postId}, 
-        {
-            $push: {usersLiked : userId},
-            $inc: {likes: 1}
-        }) 
-  
-        .then(() => res.status(200).json({ message: 'Vous aimez cette post !!!'}))
-        .catch(error => res.status(400).json({ error }));
-    }
+    const { postId } = req.params;
+    const { userId } = req.auth;
 
-    //Annulation d'un like ou dislike
-    if (like === 0) { 
-      Sauce.findOne({_id: postId})  
-        .then((post) => {
-          //Si l'utilisateur annule un like
-          if (sauce.usersLiked.find(user => user === userId)) { 
-            Sauce.updateOne(
-              {_id: postId},
-              { $pull: { usersLiked: userId},
-                $inc: { likes: -1 }
-              })
-  
-              .then(() => res.status(200).json({ message: 'Votre avis a été annulé'}))
-              .catch(error => res.status(400).json({ error }));
-          }
+    Post.findOne({ where: {id: postId }})
+    .then((post) => {
+        if(!post) {
+            return res.status(404).json({ message: "Post introuvable" });
+        }
+        
+        let newUsersLiked = []; 
+        let newLikes = post.likes;
+
+        if(!post.usersLiked.length) {
+            newUsersLiked.push(userId);
+        } else {
+            newUsersLiked = JSON.parse(post.usersLiked);
+
+            if(!newUsersLiked.includes(userId)) {
+                newUsersLiked.push(userId)
+                newLikes++;
+            } 
+        }
+
+        Post.update({ likes: newLikes, usersLiked: JSON.stringify(newUsersLiked) }, { where: { id: postId } })
+        .then(() => {
+            res.status(201).json({message: "ok"});
         })
-        .catch((error) => res.status(404).json({ error }))
-  
-    }
-  
-  };
+        .catch((err) => {
+            console.log(err)
+            res.status(400).json({err});
+        })
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(500).json({err});
+    })
+};

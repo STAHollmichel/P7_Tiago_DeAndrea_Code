@@ -17,10 +17,15 @@ const navigate = useNavigate();
 
 const [post, setPost] = useState();
 
+const [togglePopup, setTogglepopup] = useState(false);
+
 // let popup = document.getElementById("popup");
 
 // const openPopupPostEdit = 
 //     popup.classList.add("open-popup_postEdit");
+const openPopupPostEdit = () => {
+    setTogglepopup(!togglePopup)
+}
 
 useEffect(() => {
 
@@ -58,15 +63,17 @@ if(post) {
                     </picture>
                     <div className="card-body text-center ">
                         <p>{post.postDescription}</p>
-                        {/* <button onclick={openPopupPostEdit} className='btn btn-primary m-2'>Editer</button> */}
+                        <button onClick={openPopupPostEdit} className='btn btn-primary m-2'>Editer</button>
                         <button onClick={deletePost} className='btn btn-danger m-2'>Effacer</button>
                         <button onClick={commentPost} className='btn btn-danger m-2'>Commenter</button>
                     </div>
                     </div>
                 </div>
             <CommentDisplay postId={post.id}/>
-            <div className='popup_postEdit' id='popup'>
+            <div className= {`popup_postEdit ${ togglePopup ? 'open-popup_postEdit' : '' }`} id='popup'>
+                <p onClick={openPopupPostEdit}>Fermer</p>
                 <PostFormModify id={post.id} />
+
             </div>
             </main>
             <Footer />

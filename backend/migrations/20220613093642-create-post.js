@@ -9,20 +9,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Users',
-            key: 'id'
-        },
+        type: Sequelize.INTEGER
       },
-      postTittle: {
+      postTitle: {
         type: Sequelize.TEXT
       },
       postDescription: {
         type: Sequelize.TEXT
       },
       postPhoto: {
+        type: Sequelize.STRING
+      },
+      userLike: {
+        type: Sequelize.INTEGER
+      },
+      usersLiked: {
         type: Sequelize.STRING
       },
       createdAt: {
