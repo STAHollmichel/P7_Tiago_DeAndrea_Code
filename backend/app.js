@@ -1,5 +1,5 @@
 const express = require('express'); // L'import d'express
-// const path = require('path');
+const path = require('path');
 
 
 // Import des routes
@@ -26,7 +26,8 @@ app.use((req, res, next) => {
 // Parsing body en JSON
 app.use(express.json());
 
-
+// Gestion ressource d'images
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Gestion des routes
 app.use('/api/auth', userRoutes);

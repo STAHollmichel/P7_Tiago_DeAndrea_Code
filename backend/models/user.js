@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       User.hasMany(models.Post)
-	    User.hasMany(models.Comment)   
+	User.hasMany(models.Comment)   
     }
   };
 
@@ -28,7 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     profession: DataTypes.STRING,
     profilePhoto: DataTypes.STRING,
-    bio: DataTypes.TEXT
+    bio: DataTypes.TEXT,
+    admin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+    }
   }, 
   {
     sequelize,

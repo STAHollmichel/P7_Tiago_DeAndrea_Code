@@ -38,6 +38,10 @@ module.exports = {
       bio: {
         type: Sequelize.TEXT
       },
+	admin: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
