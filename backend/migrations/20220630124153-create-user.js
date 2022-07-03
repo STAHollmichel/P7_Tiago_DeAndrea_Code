@@ -38,7 +38,7 @@ module.exports = {
       bio: {
         type: Sequelize.TEXT
       },
-	admin: {
+	    admin: {
             type: Sequelize.BOOLEAN,
             defaultValue: false
       },

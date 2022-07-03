@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
             allowNull: false
     },
-    postTittle: DataTypes.TEXT,
+    postTitle: DataTypes.TEXT,
     postDescription: DataTypes.TEXT,
     postPhoto: DataTypes.STRING,
     userLike: DataTypes.INTEGER,

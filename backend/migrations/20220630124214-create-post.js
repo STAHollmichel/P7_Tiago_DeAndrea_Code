@@ -16,7 +16,7 @@ module.exports = {
             key: 'id'
         },
       },
-      postTittle: {
+      postTitle: {
         type: Sequelize.TEXT
       },
       postDescription: {

@@ -35,32 +35,42 @@ function PostDisplay() {
   return (
     <div className="container py-4 col-lg-5">
       {posts.length
-        ? posts.map((post) => (
-            <div className="card mb-3">
-              <picture>
-                <img src={post.postPhoto} className="card-img-top" alt="Post" />
-              </picture>
-              <div className="card-body text-center">
-                <h2>{post.postTittle}</h2>
-                <p>{post.postDescription}</p>
-                <div>
-                  <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
-                  <button
-                    onClick={() => like(post.id)}
-                    className="btn btn-secondary ms-3 mb-3"
-                  >
-                    Like
-                  </button>
-                  {post.userLike}
-                  <Link to={`/post/${post.id}`}>
-                    <button className="btn btn-primary ms-3 mb-3">
-                      Voir le post
+        ? posts.map((post) => {
+            console.log(post.User);
+            return (
+              <div className="card mb-3">
+                <picture>
+                  <img
+                    src={post.postPhoto}
+                    className="card-img-top"
+                    alt="Post"
+                  />
+                </picture>
+                <div className="card-body text-center">
+                  <em>
+                    Author: {post.User.firstName} {post.User.lastName}
+                  </em>
+                  <h2>{post.postTitle}</h2>
+                  <p>{post.postDescription}</p>
+                  <div>
+                    <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
+                    <button
+                      onClick={() => like(post.id)}
+                      className="btn btn-secondary ms-3 mb-3"
+                    >
+                      Like
                     </button>
-                  </Link>
+                    {post.userLike}
+                    <Link to={`/post/${post.id}`}>
+                      <button className="btn btn-primary ms-3 mb-3">
+                        Voir le post
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         : null}
     </div>
   );
